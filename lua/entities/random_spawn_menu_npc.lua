@@ -3,25 +3,29 @@ AddCSLuaFile()
 list.Set("NPC", "random_spawn_menu_npc", {
     Name = "Random NPC",
     Category = "Random NPC",
-    Class = "random_spawn_menu_npc"
+    Class = "random_spawn_menu_npc",
+    IconOverride = "entities/zippyrandom.png"
 })
 
 list.Set("SpawnableEntities", "random_spawn_menu_ent", {
     Name = "Random Entity",
     Category = "Random Entity",
-    Class = "random_spawn_menu_npc"
+    Class = "random_spawn_menu_npc",
+    IconOverride = "entities/zippyrandom.png"
 })
 
 list.Set("Vehicles", "random_spawn_menu_veh", {
     Name = "Random Vehicle",
     Category = "Random Vehicle",
-    Class = "random_spawn_menu_npc"
+    Class = "random_spawn_menu_npc",
+    IconOverride = "entities/zippyrandom.png"
 })
 
-list.Set("Weapons", "random_spawn_menu_wep", {
+list.Set("Weapon", "random_spawn_menu_wep", {
     Name = "Random Weapon",
     Category = "Random Weapon",
-    Class = "random_spawn_menu_npc"
+    Class = "random_spawn_menu_npc",
+    IconOverride = "entities/zippyrandom.png"
 })
 
 list.Set("ContentCategoryIcons", "Random NPC", "entities/zippyrandom.png")
@@ -44,6 +48,7 @@ if !SERVER then return end
 function ENT:Initialize()
     self:SetMaterial("models/wireframe")
     self:SetCollisionGroup(COLLISION_GROUP_DEBRIS)
+    self:DrawShadow(false)
     
     local npcList = list.Get("NPC")
     npcList["random_spawn_menu_npc"] = nil -- Remove the random NPC entry to avoid selecting it
