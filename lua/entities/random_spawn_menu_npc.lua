@@ -1,38 +1,5 @@
 AddCSLuaFile()
 
-list.Set("NPC", "random_spawn_menu_npc", {
-    Name = "Random NPC",
-    Category = "Random NPC",
-    Class = "random_spawn_menu_npc",
-    IconOverride = "entities/zippyrandom.png"
-})
-
-list.Set("SpawnableEntities", "random_spawn_menu_ent", {
-    Name = "Random Entity",
-    Category = "Random Entity",
-    Class = "random_spawn_menu_npc",
-    IconOverride = "entities/zippyrandom.png"
-})
-
-list.Set("Vehicles", "random_spawn_menu_veh", {
-    Name = "Random Vehicle",
-    Category = "Random Vehicle",
-    Class = "random_spawn_menu_npc",
-    IconOverride = "entities/zippyrandom.png"
-})
-
-list.Set("Weapon", "random_spawn_menu_wep", {
-    Name = "Random Weapon",
-    Category = "Random Weapon",
-    Class = "random_spawn_menu_npc",
-    IconOverride = "entities/zippyrandom.png"
-})
-
-list.Set("ContentCategoryIcons", "Random NPC", "entities/zippyrandom.png")
-list.Set("ContentCategoryIcons", "Random Weapon", "entities/zippyrandom.png")
-list.Set("ContentCategoryIcons", "Random Vehicle", "entities/zippyrandom.png")
-list.Set("ContentCategoryIcons", "Random Entity", "entities/zippyrandom.png")
-
 ENT.Base = "base_gmodentity"
 ENT.Type = "anim"
 ENT.PrintName = "Random Spawn Menu NPC"
@@ -44,29 +11,32 @@ end
 
 if !SERVER then return end
 
-
 function ENT:Initialize()
     self:SetMaterial("models/wireframe")
     self:SetCollisionGroup(COLLISION_GROUP_DEBRIS)
     self:DrawShadow(false)
     
-    local npcList = list.Get("NPC")
-    npcList["random_spawn_menu_npc"] = nil -- Remove the random NPC entry to avoid selecting it
-
-    local randomNPC, key = table.Random(npcList)
+    local randomNPC, key = table.Random(RandomSpawnMenu.AddonSpawnList_NPC)
     self.SpawnMenuClassToSpawn = key
 
     local lifetime = 3
 
     SafeRemoveEntityDelayed(self, lifetime)
 
-    conv.getEntInfo( randomNPC.Class, function(npcPreview)
+    conv.getEntInfo( randomNPC.Class, function(npc)
         if !IsValid(self) then return end
-        if !IsValid(npcPreview) then return end
+        if !IsValid(npc) then return end
 
-        self:SetModel(npcPreview:GetModel())
+        self:SetModel(npc:GetModel())
         self:PhysicsInitStatic(SOLID_OBB)
         self:SetPos(self:GetPos() + self:GetUp()*math.abs(self:OBBMins().z))
+
+        -- Apply generic model if npcs model is redundant
+        self:CONV_CallNextTick(function() 
+            if !IsValid(self:GetPhysicsObject()) then
+                self:SetModel("models/props_junk/wood_crate001a.mdl")
+            end
+        end)
 
         local pos, nrm = self:GetPos(), self:GetUp()
         pos = pos + Vector(0, 0, self:OBBMaxs().z)
