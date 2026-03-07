@@ -21,7 +21,7 @@ function ENT:Initialize()
 
     local lifetime = 3
 
-    SafeRemoveEntityDelayed(self, lifetime)
+    -- SafeRemoveEntityDelayed(self, lifetime)
 
     conv.getEntInfo( randomNPC.Class, function(npc)
         if !IsValid(self) then return end

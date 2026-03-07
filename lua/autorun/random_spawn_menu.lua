@@ -135,8 +135,49 @@ hook.Add("InitPostEntity", "RandomSpawnMenu_CreateAddonOnlyLists", function()
     RandomSpawnMenu.AddonSpawnList_NPC['npc_zombie_torso'] = nil
     RandomSpawnMenu.AddonSpawnList_NPC['monster_zombie'] = nil
     RandomSpawnMenu.AddonSpawnList_NPC['monster_houndeye'] = nil
+
+    -- WEAPON LIST
+    RandomSpawnMenu.AddonSpawnList_WEP = list.Get("Weapon")
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_handgrenade'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_rpg'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_crowbar'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_357_hl1'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_shotgun_hl1'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_smg1'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_egon'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_slam'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_357'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_crossbow'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_glock_hl1'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_base'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['gmod_camera'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_pistol'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_frag'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_stunstick'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_crossbow_hl1'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['gmod_tool'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_satchel'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_tripmine'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_fists'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_mp5_hl1'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_hornetgun'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_elitepolice_mp5k'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_snark'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_medkit'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['manhack_welder'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_shotgun'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_flechettegun'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_physcannon'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_ar2'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_crowbar_hl1'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_physgun'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['random_spawn_menu_wep'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_bugbait'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_gauss'] = nil
+    RandomSpawnMenu.AddonSpawnList_WEP['weapon_rpg_hl1'] = nil
+
 end)
 
--- for k, v in pairs(RandomSpawnMenu.AddonSpawnList_NPC) do
---     MsgN("RandomSpawnMenu.AddonSpawnList_NPC['", k, "'] = nil")
--- end
+for k, v in pairs(list.Get("Weapon")) do
+    MsgN("RandomSpawnMenu.AddonSpawnList_WEP['", k, "'] = nil")
+end
