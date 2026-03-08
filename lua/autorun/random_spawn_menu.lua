@@ -137,7 +137,13 @@ hook.Add("InitPostEntity", "RandomSpawnMenu_CreateAddonOnlyLists", function()
     RandomSpawnMenu.AddonSpawnList_NPC['monster_houndeye'] = nil
 
     -- WEAPON LIST
-    RandomSpawnMenu.AddonSpawnList_WEP = list.Get("Weapon")
+    RandomSpawnMenu.AddonSpawnList_WEP = {}
+    for k, v in pairs(list.Get("Weapon")) do
+        -- Add only spawnable weapons
+        if v.Spawnable then
+            RandomSpawnMenu.AddonSpawnList_WEP[k] = v
+        end
+    end
     RandomSpawnMenu.AddonSpawnList_WEP['weapon_handgrenade'] = nil
     RandomSpawnMenu.AddonSpawnList_WEP['weapon_rpg'] = nil
     RandomSpawnMenu.AddonSpawnList_WEP['weapon_crowbar'] = nil
@@ -178,6 +184,8 @@ hook.Add("InitPostEntity", "RandomSpawnMenu_CreateAddonOnlyLists", function()
 
 end)
 
-for k, v in pairs(list.Get("Weapon")) do
-    MsgN("RandomSpawnMenu.AddonSpawnList_WEP['", k, "'] = nil")
-end
+-- for k, v in pairs(list.Get("Weapon")) do
+--     MsgN("RandomSpawnMenu.AddonSpawnList_WEP['", k, "'] = nil")
+-- end
+
+PrintTable(RandomSpawnMenu.AddonSpawnList_WEP)

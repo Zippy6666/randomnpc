@@ -46,6 +46,11 @@ function ENT:Initialize()
         conv.display3DText( "RandomSpawnMenuNPC_Class"..self:EntIndex(), 
                 pos + nrm*30, lifetime, randomNPC.Class, color_white, 0.5 )
     end)
+
+    self:CONV_TimerSimple(3, function()
+        local own = self:GetCreator()
+        self:TakeDamage(1, conv.thisEntOrWorld( own ), conv.thisEntOrWorld( own ))
+    end)
 end
 
 function ENT:OnTakeDamage(dmginfo)
