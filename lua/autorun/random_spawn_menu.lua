@@ -37,16 +37,17 @@ list.Set("ContentCategoryIcons", "Random Entity", "entities/zippyrandom.png")
 list.Set("NPC", "random_spawn_menu_npc", {
     Name = "Random NPC",
     Category = "Random NPC",
-    Class = "random_spawn_menu_npc",
+    Class = "random_spawn_menu_ent",
     IconOverride = "entities/zippyrandom.png"
 })
 
-list.Set("Vehicles", "random_spawn_menu_veh", {
-    Name = "Random Vehicle",
-    Category = "Random Vehicle",
-    Class = "random_spawn_menu_npc",
-    IconOverride = "entities/zippyrandom.png"
-})
+-- list.Set("Vehicles", "random_spawn_menu_veh", {
+--     Name = "Random Vehicle",
+--     Category = "Random Vehicle",
+--     Class = "random_spawn_menu_ent",
+--     IconOverride = "entities/zippyrandom.png",
+--     Model = "models/error.mdl"
+-- })
 
 -- Create spawn menu lists that contain only non-vanilla stuff after map start
 hook.Add("InitPostEntity", "RandomSpawnMenu_CreateAddonOnlyLists", function()
@@ -182,10 +183,68 @@ hook.Add("InitPostEntity", "RandomSpawnMenu_CreateAddonOnlyLists", function()
     RandomSpawnMenu.AddonSpawnList_WEP['weapon_gauss'] = nil
     RandomSpawnMenu.AddonSpawnList_WEP['weapon_rpg_hl1'] = nil
 
+    -- VEHICLE LIST
+    RandomSpawnMenu.AddonSpawnList_VEH = list.Get("Vehicles")
+    RandomSpawnMenu.AddonSpawnList_VEH['Seat_Airboat'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['Chair_Wood'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['Jeep'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['random_spawn_menu_veh'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['Chair_Office1'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['Jalopy'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['Pod'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['Chair_Plastic'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['Airboat'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['Chair_Office2'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['phx_seat2'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['phx_seat'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['Seat_Jalopy'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['Seat_Jeep'] = nil
+    RandomSpawnMenu.AddonSpawnList_VEH['phx_seat3'] = nil
+
+    -- ENTITY LIST
+    RandomSpawnMenu.AddonSpawnList_ENT = list.Get("SpawnableEntities")
+    RandomSpawnMenu.AddonSpawnList_ENT['weapon_striderbuster'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_suitcharger'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_ammo_ar2'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_healthkit'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['ammo_9mmbox'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_box_buckshot'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_ammo_357'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_healthcharger'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['prop_thumper'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_healthvial'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['edit_sky'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_ammo_smg1_large'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['npc_grenade_frag'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_ammo_ar2_altfire'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_ammo_ar2_large'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['ammo_mp5clip'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['ammo_gaussclip'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_ammo_pistol'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['ammo_buckshot'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['combine_mine'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['ammo_357'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_ammo_smg1_grenade'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['edit_sun'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['edit_fog'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_suit'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_ammo_357_large'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_ammo_pistol_large'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['ammo_rpgclip'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['grenade_helicopter'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['combine_mine_resistance'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['random_spawn_menu_ent'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_ammo_smg1'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_ammo_crossbow'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['sent_ball'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['ammo_glockclip'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_battery'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['ammo_crossbow'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['item_rpg_round'] = nil
+    RandomSpawnMenu.AddonSpawnList_ENT['ammo_mp5grenades'] = nil
+
 end)
 
--- for k, v in pairs(list.Get("Weapon")) do
---     MsgN("RandomSpawnMenu.AddonSpawnList_WEP['", k, "'] = nil")
+-- for k, v in pairs(list.Get("SpawnableEntities")) do
+--     MsgN("RandomSpawnMenu.AddonSpawnList_ENT['", k, "'] = nil")
 -- end
-
-PrintTable(RandomSpawnMenu.AddonSpawnList_WEP)
