@@ -42,7 +42,7 @@ function ENT:DecideSpawn()
         conv.callNextTick(function()
             local creator = self:GetCreator()
             if IsValid(creator) then
-                creator:PrintMessage(HUD_PRINTCENTER, "No addon entities available :(")
+                creator:PrintMessage(HUD_PRINTCENTER, "No addon "..self.SpawnType.."s available :(")
             end
             self:Remove()
         end)
